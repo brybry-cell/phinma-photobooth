@@ -1,37 +1,10 @@
-
-const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
-
-export async function uploadToCloudinary(file, resourceType) {
-  if (!CLOUD_NAME || !UPLOAD_PRESET) {
-    throw new Error(
-      "Cloudinary is not configured. Check your root .env file."
-    );
-  }
-
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", UPLOAD_PRESET);
-
-  const endpoint =
-    `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/${resourceType}/upload`;
-
-  const response = await fetch(endpoint, {
-    method: "POST",
-    body: formData,
+if (!CLOUD_NAME || !UPLOAD_PRESET) {
+  console.error("Cloudinary configuration check:", {
+    hasCloudName: Boolean(CLOUD_NAME),
+    hasUploadPreset: Boolean(UPLOAD_PRESET),
   });
 
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(
-      data?.error?.message || "Cloudinary upload failed."
-    );
-  }
-
-  if (!data.secure_url) {
-    throw new Error("Cloudinary did not return a secure file URL.");
-  }
-
-  return data.secure_url;
+  throw new Error(
+    "Cloudinary is not configured. Check your environment variables."
+  );
 }
