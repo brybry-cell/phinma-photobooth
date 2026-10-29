@@ -1,0 +1,6 @@
+.photostrip-frame{position:relative;width:min(100%,310px);aspect-ratio:334.3/990.5;overflow:hidden;background:#35b9e9;flex:0 0 auto;box-shadow:0 12px 30px #172b4129}
+.photostrip-background{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;user-select:none}
+.photostrip-photo-slot{position:absolute;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#ffd822;border-radius:2.2%}
+.photostrip-photo-slot.has-photo{background:#fff}
+.photostrip-photo-slot>img{display:block;width:100%;height:100%;object-fit:cover}
+.empty-slot-label{color:#735300a6;font-size:clamp(7px,1.1vw,11px);font-weight:800;letter-spacing:.12em}
