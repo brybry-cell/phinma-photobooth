@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import CameraPreview from "../components/cameraPreview";
+import CameraPreview from "../components/CameraPreview";
 import Countdown from "../components/countdown";
 import Photostrip from "../components/photostrip";
 
